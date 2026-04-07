@@ -16,74 +16,146 @@
     h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
     .date { color: #8e8e93; font-size: 13px; margin-bottom: 36px; }
     h2 { font-size: 19px; font-weight: 600; margin: 32px 0 12px; color: #e8913a; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; color: #f5f5f7; }
     p { font-size: 15px; color: #a1a1a6; margin-bottom: 12px; }
     ul { padding-left: 20px; margin-bottom: 12px; }
     li { font-size: 15px; color: #a1a1a6; margin-bottom: 6px; }
     strong { color: #f5f5f7; }
+    a { color: #e8913a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
     .back { display: inline-block; color: #e8913a; text-decoration: none; margin-bottom: 24px; font-size: 15px; }
     .footer { text-align: center; color: #48484a; font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #1c1c1e; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #1c1c1e;
+      padding: 10px 12px;
+      text-align: left;
+      color: #a1a1a6;
+      vertical-align: top;
+    }
+    th { background: #1c1c1e; color: #f5f5f7; font-weight: 600; }
+    .note { background: #1c1c1e; border-left: 3px solid #e8913a; padding: 12px 16px; margin: 16px 0; border-radius: 4px; }
+    .note p { margin-bottom: 4px; }
   </style>
 </head>
 <body>
   <div class="container">
     <a href="index.html" class="back">← 返回首页</a>
     <h1>隐私政策</h1>
-    <p class="date">最后更新：2026 年 4 月 2 日</p>
+    <p class="date">最后更新:2026 年 4 月 7 日</p>
 
     <h2>概述</h2>
-    <p>闪念 Pensieve（以下简称"本应用"）是一款语音思维捕获工具。我们高度重视用户隐私，本应用的设计原则是<strong>数据完全由用户控制</strong>。</p>
+    <p>闪念 Pensieve(以下简称"本应用")是一款语音思维捕获工具。我们高度重视用户隐私,本应用的设计原则是<strong>数据完全由用户控制</strong>。</p>
 
-    <h2>数据收集</h2>
-    <p><strong>本应用不收集任何用户数据。</strong></p>
+    <h2>数据收集与存储</h2>
+    <p><strong>本应用本身不收集任何个人数据,不要求注册账号,不包含任何分析、广告或追踪 SDK。</strong></p>
+    <p>所有数据存储在用户的 iOS 设备本地:</p>
     <ul>
-      <li>不要求注册账号</li>
-      <li>不收集设备信息</li>
-      <li>不包含任何分析、广告或追踪 SDK</li>
-      <li>不向任何第三方发送数据</li>
+      <li><strong>录音文件</strong>:存储在 App 的 Documents 目录</li>
+      <li><strong>笔记数据</strong>:存储在本地 SQLite 数据库</li>
+      <li><strong>设置信息</strong>:存储在本地 SharedPreferences</li>
     </ul>
 
-    <h2>数据存储</h2>
-    <p>所有数据存储在用户的 iOS 设备本地：</p>
+    <h2>核心功能(完全离线)</h2>
+    <p>闪念 Pensieve 的核心功能在用户设备上完成,无需联网,<strong>录音和文字不会发送到任何服务器</strong>:</p>
     <ul>
-      <li><strong>录音文件</strong>：存储在 App 的 Documents 目录</li>
-      <li><strong>笔记数据</strong>：存储在本地 SQLite 数据库</li>
-      <li><strong>设置信息</strong>：存储在本地 SharedPreferences</li>
+      <li><strong>录音采集</strong>:使用 iOS 系统麦克风,录音文件仅保存在设备本地</li>
+      <li><strong>离线语音识别</strong>:使用内置的 Sherpa-ONNX SenseVoice 模型(约 228 MB,随 App 下载),所有识别过程在设备本地完成</li>
     </ul>
 
-    <h2>语音识别</h2>
-    <p>本应用提供两种语音识别模式：</p>
-    <p><strong>离线识别（默认）</strong></p>
+    <h2>可选的第三方服务</h2>
+    <p>为了提供 AI 整理、标签、摘要等增强功能,本应用允许用户<strong>自行选择并配置</strong>第三方 AI 服务。这些功能完全可选,不配置也不影响核心录音和离线转写功能。</p>
+
+    <h3>哪些数据会被发送</h3>
+    <p><strong>只有当你主动配置并启用第三方服务时</strong>,以下数据才会通过你的设备<strong>直接</strong>发送到你所选择的第三方服务商:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>功能</th>
+          <th>发送的数据</th>
+          <th>不会发送的数据</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>在线语音识别(可选)</td>
+          <td>录音音频文件</td>
+          <td>笔记元数据、其他笔记、设备信息</td>
+        </tr>
+        <tr>
+          <td>AI 自动整理 / 摘要 / 标签(可选)</td>
+          <td>当前笔记的转写文字</td>
+          <td>录音文件、其他笔记、设备信息</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>数据发送给谁</h3>
+    <p>第三方服务商由用户在 App 内"AI 服务配置"页面自行添加,目前支持以下服务商(用户可只配置其中一个或都不配置):</p>
     <ul>
-      <li>使用内置的 Sherpa-ONNX 语音识别引擎</li>
-      <li>所有识别过程在设备本地完成</li>
-      <li>录音数据不会离开用户设备</li>
-    </ul>
-    <p><strong>在线识别（可选）</strong></p>
-    <ul>
-      <li>用户可自行配置第三方语音识别服务</li>
-      <li>启用后，录音数据会发送到用户选择的第三方服务</li>
-      <li>本应用不参与、不中转这些数据传输</li>
+      <li><strong>DeepSeek</strong> — <a href="https://www.deepseek.com/privacy" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>阿里云百炼(DashScope)</strong> — <a href="https://help.aliyun.com/document_detail/2694015.html" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>火山引擎(豆包)</strong> — <a href="https://www.volcengine.com/docs/6256" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>Groq</strong> — <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>智谱(GLM)</strong> — <a href="https://www.zhipuai.cn/privacy" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>Kimi(月之暗面)</strong> — <a href="https://www.moonshot.cn/privacy" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>MiniMax</strong> — <a href="https://www.minimaxi.com/privacy" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>讯飞星火</strong> — <a href="https://www.xfyun.cn/doc/policy/privacy.html" target="_blank" rel="noopener">隐私政策</a></li>
+      <li><strong>自定义 OpenAI 兼容 API</strong> — 由用户填写的 base URL 决定</li>
     </ul>
 
-    <h2>AI 整理功能（可选）</h2>
+    <div class="note">
+      <p><strong>重要说明:</strong></p>
+      <ul>
+        <li>数据从用户设备<strong>直接</strong>发送到上述第三方服务商,<strong>不经过闪念 Pensieve 的任何服务器</strong>(我们没有服务器)</li>
+        <li>用户的 API Key 仅存储在设备本地的 SharedPreferences 中,不上传任何地方</li>
+        <li>是否使用上述服务、何时使用、使用哪一家,<strong>完全由用户控制</strong></li>
+        <li>上述服务商对数据的使用受其各自隐私政策约束,请用户在使用前自行阅读并同意</li>
+      </ul>
+    </div>
+
+    <h3>用户同意流程</h3>
+    <p>为确保知情同意:</p>
     <ul>
-      <li>用户可自行配置第三方 AI 服务用于笔记整理</li>
-      <li>启用后，笔记文字内容会发送到用户选择的第三方服务</li>
-      <li>用户需自行提供 API Key 并了解相关服务的隐私政策</li>
+      <li>App 启动时不会自动联网,核心功能完全离线运行</li>
+      <li>首次添加任何第三方 AI 服务账户时,App 会<strong>弹出明确的告知对话框</strong>,列出本政策中"哪些数据会被发送"和"数据发送给谁"的核心信息,用户需点击"同意并启用"才能保存账户</li>
+      <li>用户可随时在"AI 服务配置"页面删除任何账户,删除后该服务商不再被调用</li>
     </ul>
 
-    <h2>iCloud 备份（可选）</h2>
+    <h2>iCloud 备份(可选)</h2>
     <ul>
-      <li>用户可选择开启 iCloud 备份功能</li>
-      <li>数据传输和存储由 Apple 负责，受 Apple 隐私政策保护</li>
+      <li>用户可在设置中<strong>手动</strong>开启 iCloud 备份功能,默认关闭</li>
+      <li>开启后,录音文件和笔记数据通过 Apple 的 iCloud Drive 服务同步到用户自己的 iCloud 账户</li>
+      <li>数据传输和存储由 Apple 负责,受 <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple 隐私政策</a> 保护</li>
+      <li>闪念 Pensieve 不接触、不读取、不存储用户的 iCloud 数据</li>
       <li>用户可随时在设置中关闭此功能</li>
     </ul>
 
+    <h2>权限说明</h2>
+    <p>本应用申请的 iOS 系统权限及用途:</p>
+    <ul>
+      <li><strong>麦克风</strong>:用于录制语音笔记</li>
+      <li><strong>本地通知</strong>:用于"提醒回看"功能(用户主动设置)</li>
+      <li><strong>网络访问</strong>:仅在用户主动启用第三方 AI 服务或 iCloud 备份时使用</li>
+    </ul>
+
     <h2>儿童隐私</h2>
-    <p>本应用不针对 13 岁以下儿童，不收集任何个人信息。</p>
+    <p>本应用不针对 13 岁以下儿童,不收集任何个人信息。</p>
+
+    <h2>隐私政策变更</h2>
+    <p>如本隐私政策有任何变更,我们会在应用内"设置 → 隐私政策"页面以及本页面发布更新。重大变更会在 App 内通过弹窗告知用户。</p>
 
     <h2>联系方式</h2>
-    <p>如对本隐私政策有任何疑问，请联系：<strong>4over7@gmail.com</strong></p>
+    <p>如对本隐私政策有任何疑问,请联系:</p>
+    <ul>
+      <li>邮箱:<strong>leon@4over7.com</strong></li>
+      <li>GitHub Issues:<a href="https://github.com/4over7/pensieve-app/issues" target="_blank" rel="noopener">github.com/4over7/pensieve-app/issues</a></li>
+    </ul>
 
     <div class="footer">
       <p>© 2026 Eastworld. All rights reserved.</p>
