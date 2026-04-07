@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Pensieve</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f7;
+      line-height: 1.8;
+    }
+    .container { max-width: 680px; margin: 0 auto; padding: 48px 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .date { color: #8e8e93; font-size: 13px; margin-bottom: 36px; }
+    h2 { font-size: 19px; font-weight: 600; margin: 32px 0 12px; color: #e8913a; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; color: #f5f5f7; }
+    p { font-size: 15px; color: #a1a1a6; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { font-size: 15px; color: #a1a1a6; margin-bottom: 6px; }
+    strong { color: #f5f5f7; }
+    a { color: #e8913a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .back { color: #e8913a; text-decoration: none; font-size: 15px; }
+    .lang-switch { font-size: 13px; color: #8e8e93; }
+    .lang-switch a { margin-left: 8px; }
+    .lang-switch .active { color: #f5f5f7; font-weight: 600; }
+    .footer { text-align: center; color: #48484a; font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #1c1c1e; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #1c1c1e;
+      padding: 10px 12px;
+      text-align: left;
+      color: #a1a1a6;
+      vertical-align: top;
+    }
+    th { background: #1c1c1e; color: #f5f5f7; font-weight: 600; }
+    .note { background: #1c1c1e; border-left: 3px solid #e8913a; padding: 12px 16px; margin: 16px 0; border-radius: 4px; }
+    .note p { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <a href="index.html" class="back">← Home</a>
+      <div class="lang-switch">
+        <a href="privacy.html">中文</a>
+        <a href="privacy.en.html" class="active">English</a>
+      </div>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="date">Last updated: April 7, 2026</p>
+
+    <h2>Overview</h2>
+    <p>Pensieve ("the App") is a voice-first thought-capture tool. We take user privacy seriously. The design principle of this App is that <strong>all data is fully controlled by the user</strong>.</p>
+
+    <h2>Data Collection and Storage</h2>
+    <p><strong>The App itself does not collect any personal data, does not require account registration, and does not include any analytics, advertising, or tracking SDKs.</strong></p>
+    <p>All data is stored locally on the user's iOS device:</p>
+    <ul>
+      <li><strong>Audio recordings</strong>: stored in the App's Documents directory</li>
+      <li><strong>Note data</strong>: stored in a local SQLite database</li>
+      <li><strong>Settings</strong>: stored in local SharedPreferences</li>
+    </ul>
+
+    <h2>Core Features (Fully Offline)</h2>
+    <p>Pensieve's core features run entirely on the user's device, with no network access required. <strong>Recordings and text are never sent to any server</strong>:</p>
+    <ul>
+      <li><strong>Audio recording</strong>: uses the iOS system microphone; recording files are stored only locally on the device</li>
+      <li><strong>Offline speech recognition</strong>: uses the bundled Sherpa-ONNX SenseVoice model (~228 MB, shipped with the App); all recognition runs locally on the device</li>
+    </ul>
+
+    <h2>Optional Third-Party Services</h2>
+    <p>To provide enhanced features such as AI organization, tagging, and summarization, the App allows users to <strong>voluntarily configure</strong> third-party AI services. These features are entirely optional; not configuring them does not affect the core recording and offline transcription features.</p>
+
+    <h3>What Data Is Sent</h3>
+    <p><strong>Only when you actively configure and enable a third-party service</strong>, the following data is sent <strong>directly</strong> from your device to the third-party provider you have selected:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Data sent</th>
+          <th>Data NOT sent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Online speech recognition (optional)</td>
+          <td>The audio file of the current recording</td>
+          <td>Note metadata, other notes, device information</td>
+        </tr>
+        <tr>
+          <td>AI auto-organization / summary / tags (optional)</td>
+          <td>The transcribed text of the current note</td>
+          <td>Audio files, other notes, device information</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Who Receives the Data</h3>
+    <p>Third-party providers are added by the user on the App's "AI Service Configuration" page. The following providers are currently supported (the user may configure only one, several, or none):</p>
+    <ul>
+      <li><strong>DeepSeek</strong> — <a href="https://www.deepseek.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Alibaba DashScope</strong> — <a href="https://help.aliyun.com/document_detail/2694015.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Volcengine (Doubao)</strong> — <a href="https://www.volcengine.com/docs/6256" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Groq</strong> — <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Zhipu (GLM)</strong> — <a href="https://www.zhipuai.cn/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Kimi (Moonshot)</strong> — <a href="https://www.moonshot.cn/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>MiniMax</strong> — <a href="https://www.minimaxi.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>iFlytek Spark</strong> — <a href="https://www.xfyun.cn/doc/policy/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><strong>Custom OpenAI-compatible API</strong> — determined by the base URL the user fills in</li>
+    </ul>
+
+    <div class="note">
+      <p><strong>Important notes:</strong></p>
+      <ul>
+        <li>Data is sent <strong>directly</strong> from the user's device to the third-party providers above; <strong>it does not pass through any Pensieve server</strong> (we have no servers)</li>
+        <li>The user's API key is stored only in local SharedPreferences on the device and is not uploaded anywhere</li>
+        <li>Whether to use these services, when to use them, and which one to use is <strong>entirely under the user's control</strong></li>
+        <li>The use of data by these providers is governed by their respective privacy policies; users are responsible for reading and agreeing to them before use</li>
+      </ul>
+    </div>
+
+    <h3>User Consent Flow</h3>
+    <p>To ensure informed consent:</p>
+    <ul>
+      <li>The App does not connect to the network on launch; core features run fully offline</li>
+      <li>The first time the user attempts to add any third-party AI service account, the App displays an <strong>explicit disclosure dialog</strong> that lists the core information from this policy. The user must tap "Agree and Enable" to save the account</li>
+      <li>The user can delete any account at any time on the "AI Service Configuration" page; once deleted, the corresponding provider will no longer be called</li>
+    </ul>
+
+    <h2>iCloud Backup (Optional)</h2>
+    <ul>
+      <li>The user can <strong>manually</strong> enable iCloud backup in Settings; it is off by default</li>
+      <li>Once enabled, recording files and note data are synced via Apple's iCloud Drive service to the user's own iCloud account</li>
+      <li>Data transmission and storage are handled by Apple and protected by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a></li>
+      <li>Pensieve does not access, read, or store the user's iCloud data</li>
+      <li>The user can disable this feature at any time in Settings</li>
+    </ul>
+
+    <h2>Permissions</h2>
+    <p>The iOS system permissions requested by this App and their purposes:</p>
+    <ul>
+      <li><strong>Microphone</strong>: to record voice notes</li>
+      <li><strong>Local Notifications</strong>: for the "Reminder" feature (set by the user)</li>
+      <li><strong>Network access</strong>: only used when the user actively enables third-party AI services or iCloud backup</li>
+    </ul>
+
+    <h2>Children's Privacy</h2>
+    <p>This App is not directed to children under 13 and does not collect any personal information.</p>
+
+    <h2>Changes to This Privacy Policy</h2>
+    <p>If this Privacy Policy changes, we will publish updates on the in-app "Settings → Privacy Policy" page and on this page. Significant changes will be communicated to users via an in-app dialog.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us:</p>
+    <ul>
+      <li>Email: <strong>leon@4over7.com</strong></li>
+      <li>GitHub Issues: <a href="https://github.com/4over7/pensieve-app/issues" target="_blank" rel="noopener">github.com/4over7/pensieve-app/issues</a></li>
+    </ul>
+
+    <div class="footer">
+      <p>© 2026 Eastworld. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
